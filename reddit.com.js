@@ -40,20 +40,23 @@ $("a.author").each(function(i,e) {
   var noteField = $("<input />");
   noteField.css({"display": "none"});
   noteField.blur(function() {
-    localStorage.setItem(authorId, noteField.val());
     noteField.toggle();
-    $("."+_TR.authorSpanClass(authorId)).remove();
-    $("a." + authorId).each(function(_,el) {
-      $(el).after(_TR.deleteLink(authorId));
-      $(el).after(_TR.authorSpan(authorId));
-    });
+    var val = noteField.val();
+    if(val) {
+      localStorage.setItem(authorId, noteField.val());
+      $("."+_TR.authorSpanClass(authorId)).remove();
+      $("a." + authorId).each(function(_,el) {
+        $(el).after(_TR.deleteLink(authorId));
+        $(el).after(_TR.authorSpan(authorId));
+      });
+    }
   });
 
   var noteFieldToggle = $("<a />");
   noteFieldToggle.text("+");
   noteFieldToggle.attr("href", "#");
   noteFieldToggle.click(function(e) {
-    $(noteField).toggle();
+    $(noteField).toggle().focus();
     e.preventDefault();
   });
 
