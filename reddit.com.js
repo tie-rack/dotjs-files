@@ -78,3 +78,6 @@ $("a.author").each(function(i,e) {
     $(e).after(span);
   }
 });
+
+// Show links without text in comments
+$("div.usertext-body a:empty").each(function(_,e) {$(e).text(e.href)})
