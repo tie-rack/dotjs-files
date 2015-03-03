@@ -8,7 +8,7 @@ var _TR = {
     if (note.length == 0) return hash;
     for (i = 0; i < note.length; i++) {
       char = note.charCodeAt(i);
-      hash = hash + (char * char + char);
+      hash = char + (hash << 6) + (hash << 16) - hash;
     }
     return hash % 360;
   },
