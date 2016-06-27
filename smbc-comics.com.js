@@ -1,4 +1,4 @@
-var comic = $("#comic");
+var comic = $("#cc-comic");
 var comicContainer = comic.parent();
 
 // Title tag!
